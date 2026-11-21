@@ -1,0 +1,11 @@
+/* ==========================================================================
+   Finimalism — rewritten for Jellyfin 12.2 (web client 12.2.x)
+   Original theme: tedhinklater/finimalism (github.com/tedhinklater/finimalism)
+   12.2 port: adds a modern-UI (React/MUI) adapter + --jf-palette-* bridge
+   while keeping every original rule untouched for the classic/legacy/TV
+   layouts. Install via Dashboard > Branding > CSS (see README-12.2.md).
+   ========================================================================== */
+.layout-desktop #indexPage .itemsContainer, .layout-tv #indexPage .itemsContainer {
+  display: flex !important; flex-wrap: nowrap !important; gap: unset;}
+#indexPage button[data-direction="left"], #indexPage button[data-direction="right"] {
+  opacity: 0.5; padding-right: 1em;}

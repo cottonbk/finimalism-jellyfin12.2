@@ -1,0 +1,539 @@
+/* ==========================================================================
+   Finimalism — rewritten for Jellyfin 12.2 (web client 12.2.x)
+   Original theme: tedhinklater/finimalism (github.com/tedhinklater/finimalism)
+   12.2 port: adds a modern-UI (React/MUI) adapter + --jf-palette-* bridge
+   while keeping every original rule untouched for the classic/legacy/TV
+   layouts. Install via Dashboard > Branding > CSS (see README-12.2.md).
+   ========================================================================== */
+@import url("https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/finimalism7.css");
+
+/* Backdrop */
+.backgroundContainer {
+	background: #000;
+	-webkit-background-size: cover;
+	background-size: cover;
+	opacity: 0;
+}
+
+.itemsContainer.padded-left {
+	position: top;
+	z-index: 1;
+}
+
+.itemsContainer.padded-left::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-size: cover;
+	opacity: 1;
+	z-index: -1;
+	backdrop-filter: saturate(0%) !important;
+}
+
+.sectionTitleContainer.sectionTitleContainer-cards.padded-left::before {
+	backdrop-filter: saturate(0%) !important;
+}
+
+.detailPagePrimaryContainer {
+	position: relative;
+	z-index: 2;
+}
+
+.detailPagePrimaryContainer::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000000ba;
+	background-size: cover;
+	opacity: 1;
+	z-index: -1;
+        backdrop-filter: saturate(25%) contrast(150%) blur(2px);
+        filter: drop-shadow(0px 3px 4px #000a);
+}
+
+.detailPageSecondaryContainer {
+	position: relative;
+	z-index: 1;
+}
+
+.detailPageSecondaryContainer::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000000db;
+	background-size: cover;
+	opacity: 1;
+	z-index: -1;
+        backdrop-filter: saturate(0%) contrast(200%) blur(1px);
+}
+
+.raised.homeLibraryButton {
+	box-shadow: 0px 0px 1px rgb(255, 255, 255) !important;
+	border: solid 1px rgba(var(--accent),0) !important;
+}
+
+.raised.homeLibraryButton:hover,.emby-tab-button:hover, .textareaLabelFocused, .buttonActive {
+	color: rgb(0, 0, 0) !important;
+	box-shadow: 0px 0px 5px rgb(255, 255, 255) !important;
+}
+
+.button-flat:hover, .paper-icon-button-light:hover { 
+	color: rgb(255, 255, 255) !important;
+}
+
+.cardOverlayContainer:hover, .dialog, .toast, .raised.homeLibraryButton:hover {
+	box-shadow: 0px 0px 5px rgb(255, 255, 255);
+	border: solid 1px rgba(var(--accent),0);
+}
+
+.mainDrawer-scrollContainer.scrollContainer .navMenuOption:hover, .mainDrawer-scrollContainer.scrollContainer .navMenuOption:hover emby-button, button.is-emby-button:hover emby-button {
+	background: #fff !important;
+	transition: background 0 !important;
+	color: #000 !important;
+}
+
+#myPreferencesMenuPage .verticalSection-extrabottompadding .emby-button:hover,
+#myPreferencesMenuPage .verticalSection-extrabottompadding .emby-button .listItemBody:hover,
+#myPreferencesMenuPage .verticalSection-extrabottompadding .emby-button .listItem:hover {
+	background: #fff !important;
+	transition: background 0.3s ease;
+	color: #000 !important;
+}
+
+.dialogContainer .listItem:hover .listItemBodyText {
+	color: #000;
+}
+
+.dialogContainer .listItem:hover .listItemAside {
+	color: #000d;
+}
+
+#myPreferencesMenuPage .verticalSection-extrabottompadding .emby-button:hover .listItemBodyText {
+	color: black !important;
+}
+
+.subtitleList .listItem:hover .listItemBody {
+	color: #fff;
+}
+.subtitleResults .listItem:hover .listItemBodyText {
+  color: #fff;
+}
+.subtitleList .listItem:hover .secondary.listItemBodyText,
+.subtitleList .listItem.listItem-border:hover .secondary.listItemBodyText {
+        color: #fffa;
+}
+.actionSheetScroller .listItem.listItem-button:hover .listItemBodyText {
+        color: #000;
+}
+
+.verticalSection-extrabottompadding .emby-button {
+	transition: background 0.3s ease;
+}
+
+.mainDrawer-scrollContainer.scrollContainer .navMenuOption:hover .navMenuOptionText {
+	color: #000 !important;
+}
+
+.emby-select-withcolor > option {
+	color: inherit;
+	background: #000;
+}
+
+.layout-desktop .mainDetailButtons.focuscontainer-x .button-flat:hover, .layout-tv .mainDetailButtons.focuscontainer-x .button-flat:focus {
+	background: #404040 !important;
+}
+
+.innerCardFooter, .countIndicator, .playedIndicator {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.95) 100%);
+	box-shadow: none;
+	color: rgb(var(--accent));
+}
+
+.headerTabs.sectionTabs:hover .emby-button {
+	color: #fff !important;
+	box-shadow: none !important;
+}
+
+#loginPage {
+	background: url(https://i.ibb.co/xnWbbLm/bg.jpg) !important; 
+	background-size: cover !important;
+}
+
+.pageTabContent.is-active::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: #000000db;
+	background-attachment: scroll;
+	background-size: auto;
+	background-size: cover;
+	opacity: 1;
+	backdrop-filter: saturate(0%) contrast(200%);
+	z-index: -1;
+	background-attachment: fixed;
+}
+
+.layout-desktop .mainDetailButtons.focuscontainer-x {
+        background: #000000ba;
+        background-size: auto;
+        background-size: cover;
+        opacity: 1;
+        z-index: -1;
+        backdrop-filter: saturate(25%) contrast(150%) blur(3px);
+}
+
+.backgroundContainer, .preload {
+	background-color: #000;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.paper-icon-button-light:hover:not(:disabled) {
+		color: rgba(var(--accent)) !important;
+		background-color: rgba(199, 199, 199, 0.2);
+	}
+}
+
+.paper-icon-button-light:active:not(:disabled),
+.paper-icon-button-light.show-focus:focus,
+.inputLabelFocused,
+.selectLabelFocused,
+.textareaLabelFocused,
+.upNextDialog-countdownText,
+.button-flat:hover,
+.button-link,
+.emby-select-withcolor:focus,
+.emby-tab-button.show-focus:focus,
+.emby-tab-button:hover,
+.guide-date-tab-button.emby-tab-button-active,
+.guide-date-tab-button:focus,
+.buttonActive,
+.metadataSidebarIcon,
+.layout-tv .emby-button.detailFloatingButton:focus,
+#dialogToc .bookplayerButtonIcon:hover,
+#dialogToc .toc li a:active,
+#dialogToc .toc li a:hover {
+	color: #fff !important;
+}
+
+.alphaPickerButton-tv:focus,
+.emby-select-tv-withcolor:focus,
+.guide-channelHeaderCell:focus,
+.programCell:focus,
+.guide-date-tab-button.show-focus:focus,
+.emby-button.detailFloatingButton,
+.alphaPickerButton-tv:focus,
+.emby-select-tv-withcolor:focus,
+.emby-checkbox:checked + span + .checkboxOutline,
+.itemProgressBarForeground {
+	background-color: rgba(var(--accent)) !important;
+}
+
+.progressring-spiner,
+.emby-input:focus,
+.emby-textarea:focus,
+.emby-select-withcolor:focus,
+.emby-checkbox:checked + span + .checkboxOutline,
+.emby-checkbox:focus:not(:checked) + span + .checkboxOutline,
+.card:focus .cardBox.visualCardBox,
+.card:focus .cardBox:not(.visualCardBox) .cardScalable {
+	border-color: rgba(var(--accent)) !important;
+} 
+
+#nowPlayingPage .remoteControlContent.padded-left.padded-right.padded-bottom.hideVideoButtons::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000c;
+	z-index: 0;
+}
+
+.layout-desktop .headerLeft,
+.layout-tv .headerLeft {
+	background: #0008;
+}
+
+@media (min-width: 60em) {
+	.headerTabs.sectionTabs .tabs-viewmenubar.emby-tabs.focusable.scrollX .emby-tab-button.emby-button {
+		background: #000000e0 !important;
+	}
+}
+
+.layout-desktop .headerRight,
+.layout-tv .headerRight {
+	background: #0008;
+}
+
+.skip-button {
+	background: #000;
+}
+
+.layout-desktop .videoOsdBottom,
+.layout-tv .videoOsdBottom {
+	background: #000a;
+}
+
+
+
+
+/* ==========================================================================
+   Jellyfin 12.2 — modern UI adapter
+   --------------------------------------------------------------------------
+   Jellyfin 12.2 boots a new React/MUI shell by default (the "modern"
+   layout). Content pages (home, library, item details, playback OSD) still
+   render with the classic DOM, so every rule above keeps working there and
+   in the legacy/TV layouts. This section re-skins the new shell (MUI app
+   bar, navigation drawer, menus, forms, controls) with the theme's own
+   variables and bridges finimalism colours into the official --jf-palette-*
+   custom-property hooks that the 12.2 web client exposes for themes.
+   ========================================================================== */
+
+
+/* ---- 12.2 palette bridge: finimalism variables -> MUI palette ---- */
+:root {
+  /* space-separated twins of --accent/--tint/--tint2 (the modern UI composes
+     alpha as rgb(R G B / a), which needs spaces instead of commas) */
+  --accentSpace: 0 164 220;
+  --tintSpace: 0 0 0;
+  --tint2Space: 19 19 19;
+
+  --jf-palette-primary-main: rgb(var(--accentSpace, 0 164 220));
+  --jf-palette-primary-light: rgb(var(--accentSpace, 0 164 220));
+  --jf-palette-primary-dark: color-mix(in srgb, rgb(var(--accentSpace, 0 164 220)) 82%, #000);
+  --jf-palette-primary-contrastText: #fff;
+  --jf-palette-primary-mainChannel: var(--accentSpace);
+  --jf-palette-secondary-main: rgb(var(--accentSpace, 0 164 220));
+  --jf-palette-secondary-contrastText: #fff;
+  --jf-palette-secondary-mainChannel: var(--accentSpace);
+  --jf-palette-background-default: rgb(var(--tintSpace, 0 0 0));
+  --jf-palette-background-defaultChannel: var(--tintSpace);
+  --jf-palette-background-paper: rgb(var(--tintSpace, 0 0 0));
+  --jf-palette-background-paperChannel: var(--tintSpace);
+  --jf-palette-AppBar-defaultBg: rgb(var(--tintSpace, 0 0 0));
+  --jf-palette-AppBar-transparentBg: rgba(var(--tintSpace, 0 0 0), 0.4);
+  --jf-palette-text-primary: #fff;
+  --jf-palette-text-secondary: rgba(255, 255, 255, 0.7);
+  --jf-palette-common-white: #fff;
+  --jf-palette-divider: rgba(255, 255, 255, 0.12);
+  --jf-palette-Button-inheritContainedBg: rgba(var(--tint2Space, 19 19 19), 0.5);
+  --jf-palette-Button-inheritContainedHoverBg: rgba(var(--tint2Space, 19 19 19), 0.8);
+  --jf-palette-SnackbarContent-bg: rgb(var(--tintSpace, 0 0 0));
+  --jf-palette-SnackbarContent-color: #fff;
+  --jf-palette-FilledInput-bg: rgba(255, 255, 255, 0.09);
+  --jf-palette-FilledInput-borderColor: rgba(255, 255, 255, 0.12);
+  --jf-palette-action-selectedOpacity: 0.2;
+}
+
+
+/* ---- typography: Geom across the MUI shell ---- */
+body,
+.MuiTypography-root,
+.MuiButton-root,
+.MuiInputBase-input,
+.MuiOutlinedInput-input,
+.MuiFilledInput-input,
+.MuiSelect-select,
+.MuiMenuItem-root,
+.MuiListItemText-primary,
+.MuiTooltip-tooltip {
+  font-family: "Geom", "Noto Sans", sans-serif;
+}
+
+
+/* ---- modern app bar (replaces .skinHeader in the modern layout) ---- */
+.MuiAppBar-root {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* content text/buttons keep the finimalism drop-shadow look */
+.MuiAppBar-root .MuiToolbar-root {
+  -webkit-filter: drop-shadow(0px 0px 1.5px rgb(0, 0, 0));
+  filter: drop-shadow(0px 0px 1.5px rgb(0, 0, 0));
+}
+
+/* scrolled state: tinted glass, like the classic .mainDrawer treatment */
+.MuiAppBar-root.MuiAppBar-colorDefault {
+  background-color: rgba(var(--tintSpace, 0 0 0), 0.6);
+}
+
+
+/* toolbar buttons */
+.MuiAppBar-root .MuiIconButton-root,
+.MuiAppBar-root .MuiButton-root {
+  color: #fff;
+}
+.MuiAppBar-root .MuiIconButton-root:hover,
+.MuiAppBar-root .MuiButton-root:hover {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+/* the active library button in the top nav uses MUI "primary" colour */
+.MuiAppBar-root .MuiButton-root.MuiButton-textPrimary {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiAppBar-root .MuiButton-startIcon {
+  color: inherit;
+}
+
+
+/* ---- modern navigation drawer (small screens / narrow windows) ---- */
+.MuiDrawer-root .MuiDrawer-paper {
+  background-color: rgba(var(--tintSpace, 0 0 0), 0.4);
+  border-right: 0;
+}
+
+
+.MuiDrawer-root .MuiListItemButton-root {
+  border-radius: var(--rounding);
+  margin-left: 0.6em;
+  margin-right: 0.6em;
+  width: auto;
+}
+.MuiDrawer-root .MuiListItemButton-root:hover {
+  background-color: #fff;
+  color: #000;
+}
+.MuiDrawer-root .MuiListItemButton-root:hover .MuiListItemIcon-root,
+.MuiDrawer-root .MuiListItemButton-root:hover .MuiListItemText-primary {
+  color: #000;
+}
+.MuiDrawer-root .MuiListItemButton-root.Mui-selected {
+  background-color: transparent;
+}
+.MuiDrawer-root .MuiListItemButton-root.Mui-selected .MuiListItemText-primary {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiDrawer-root .MuiListItemIcon-root {
+  color: inherit;
+}
+.MuiDrawer-root .MuiListSubheader-root {
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-left: 0.6em;
+}
+
+
+/* ---- MUI panels: menus, dialogs, popovers ---- */
+.MuiPaper-root {
+  background-color: rgb(var(--tintSpace, 0 0 0));
+  background-image: none;
+  color: #fff;
+}
+.MuiMenu-paper,
+.MuiPopover-paper,
+.MuiDialog-paper,
+.MuiAlert-root,
+.MuiSnackbarContent-root {
+  border-radius: var(--rounding);
+}
+
+
+.MuiBackdrop-root {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.MuiTooltip-tooltip {
+  background-color: rgb(var(--tint2Space, 19 19 19));
+  color: #fff;
+  border-radius: var(--rounding);
+  font-size: 0.85rem;
+}
+
+
+/* ---- MUI controls ---- */
+.MuiButton-root {
+  border-radius: var(--rounding);
+}
+.MuiButton-containedPrimary {
+  background-color: rgb(var(--accentSpace, 0 164 220));
+  color: #fff;
+}
+.MuiButton-containedPrimary:hover {
+  background-color: color-mix(in srgb, rgb(var(--accentSpace, 0 164 220)) 85%, #000);
+}
+.MuiButton-textPrimary {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiButtonGroup-root .MuiButtonGroup-grouped {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.MuiChip-root {
+  border-radius: var(--rounding);
+}
+.MuiChip-colorPrimary {
+  background-color: rgba(var(--accentSpace, 0 164 220), 0.25);
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiFilledInput-root,
+.MuiOutlinedInput-root {
+  border-radius: var(--rounding);
+}
+.MuiFilledInput-root {
+  background-color: rgba(255, 255, 255, 0.09);
+}
+.MuiMenuItem-root.Mui-selected {
+  background-color: rgba(var(--accentSpace, 0 164 220), 0.15);
+}
+.MuiLinearProgress-root {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.MuiLinearProgress-barColorPrimary {
+  background-color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiCircularProgress-colorPrimary {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiSwitch-switchBase.Mui-checked {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+  background-color: rgba(var(--accentSpace, 0 164 220), 0.5);
+}
+.MuiCheckbox-root.Mui-checked,
+.MuiRadio-root.Mui-checked {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiBadge-badge {
+  background-color: rgb(var(--accentSpace, 0 164 220));
+  color: #fff;
+}
+.MuiPaginationItem-root.Mui-selected {
+  background-color: rgb(var(--accentSpace, 0 164 220));
+  color: #fff;
+}
+.MuiTab-root.Mui-selected {
+  color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiTabs-indicator {
+  background-color: rgb(var(--accentSpace, 0 164 220));
+}
+.MuiTableCell-root {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.MuiSkeleton-root {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- scrollbars in the modern shell ---- */
+* {
+  scrollbar-color: rgba(var(--tint2Space, 19 19 19), 0.9) transparent;
+}
+
+
+/* ==== end of Jellyfin 12.2 modern UI adapter ==== */
