@@ -72,11 +72,11 @@ Paste the import line into **Dashboard → Branding → CSS**
 Upload this folder to your own GitHub repo (or any HTTPS host) and use:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/YOUR-USER/finimalism@main/Finimalism11.css");
+@import url("https://cdn.jsdelivr.net/gh/cottonbk/finimalism-jellyfin12.2@main/Finimalism11.css");
 ```
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/YOUR-USER/finimalism@main/Finimalism12.css");
+@import url("https://cdn.jsdelivr.net/gh/cottonbk/finimalism-jellyfin12.2@main/Finimalism12.css");
 ```
 
 ### Option B — no hosting
